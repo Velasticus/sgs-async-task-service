@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- Inherit from the global SGS super POM -->
+  <parent>
+    <groupId>com.projectdarkstar</groupId>
+    <artifactId>sgs</artifactId>
+    <version>6</version>
+  </parent>
+
+  <groupId>com.projectdarkstar.services</groupId>
+  <artifactId>services-parent</artifactId>
+  <name>Services</name>
+  <packaging>pom</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <description>
+    Parent POM for the Project Darkstar Services project.
+  </description>
+
+  <modules>
+    <module>services</module>
+    <module>services-javadoc</module>
+  </modules>
+
+  <build>
+    <plugins>
+      <!-- Always attach a sources jar where applicable -->
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-source-plugin</artifactId>
+	<executions>
+	  <execution>
+	    <id>attach-sources</id>
+	  </execution>
+	</executions>
+      </plugin>
+      <!-- Always attach a javadoc jar where applicable -->
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-javadoc-plugin</artifactId>
+	<executions>
+	  <execution>
+	    <id>attach-javadocs</id>
+	  </execution>
+	</executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <repositories>
+    <repository>
+      <id>java.net</id>
+      <name>java.net Maven2 Repository</name>
+      <url>http://download.java.net/maven/2/</url>
+      <layout>default</layout>
+    </repository>
+    <repository>
+      <id>games-darkstar.snapshots</id>
+      <name>games-darkstar SNAPSHOT Repository</name>
+      <url>https://games-darkstar.dev.java.net/nonav/snapshots</url>
+      <layout>default</layout>
+    </repository>
+  </repositories>
+
+  <properties>
+    <sgs.version>0.9.7</sgs.version>
+    <!-- to run against a local version of the trunk uncomment the
+    following line and comment out the line above this comment -->
+    <!-- <sgs.version>0.9.8-SNAPSHOT</sgs.version> -->
+    <sgs-shared.version>1.0</sgs-shared.version>
+  </properties>
+
+</project>

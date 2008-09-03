@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.projectdarkstar.services</groupId>
+    <artifactId>services-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>services</artifactId>
+  <name>Utility Services</name>
+  <packaging>jar</packaging>
+  <description>
+    Utility Services for the Darkstar applications.
+  </description>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.projectdarkstar.server</groupId>
+      <artifactId>sgs-server</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.projectdarkstar.server</groupId>
+      <artifactId>sgs-shared</artifactId>
+    </dependency>
+  </dependencies>
+
+</project>
