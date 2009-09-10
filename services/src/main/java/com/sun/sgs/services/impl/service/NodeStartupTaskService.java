@@ -73,7 +73,7 @@ public class NodeStartupTaskService implements Service {
     /** Creates an instance of {@code NodeStartupTaskService}. */
     public NodeStartupTaskService(Properties p, ComponentRegistry cr,
                                   TransactionProxy tp) {
-        this.asyncTaskService = cr.getComponent(AsyncTaskService.class);
+        this.asyncTaskService = tp.getService(AsyncTaskService.class);
 
         String runnableProp = p.getProperty(RUNNABLE_PROPERTY);
         if (runnableProp != null) {
