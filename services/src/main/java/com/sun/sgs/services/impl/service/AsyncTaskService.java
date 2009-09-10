@@ -117,11 +117,8 @@ public class AsyncTaskService implements Service, AsyncTaskManager {
     public void ready() throws Exception { }
 
     /** {@inheritDoc} */
-    public boolean shutdown() {
-        if (isShutdown.get())
-            return false;
+    public void shutdown() {
         isShutdown.set(true);
-        return true;
     }
 
     /** {@inheritDoc} */

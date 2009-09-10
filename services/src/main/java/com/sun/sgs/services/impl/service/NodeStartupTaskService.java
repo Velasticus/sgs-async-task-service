@@ -109,8 +109,6 @@ public class NodeStartupTaskService implements Service {
     }
 
     /** {@inheritDoc} */
-    public boolean shutdown() {
-        return true;
-    }
+    public void shutdown() { }
 
 }

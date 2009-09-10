@@ -66,7 +66,7 @@
   </repositories>
 
   <properties>
-    <sgs.version>0.9.7</sgs.version>
+    <sgs.version>0.9.10</sgs.version>
     <!-- to run against a local version of the trunk uncomment the
     following line and comment out the line above this comment -->
     <!-- <sgs.version>0.9.8-SNAPSHOT</sgs.version> -->
