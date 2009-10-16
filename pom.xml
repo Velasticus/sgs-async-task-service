@@ -4,13 +4,6 @@
                       http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <!-- Inherit from the global SGS super POM -->
-  <parent>
-    <groupId>com.projectdarkstar</groupId>
-    <artifactId>sgs</artifactId>
-    <version>6</version>
-  </parent>
-
   <groupId>com.projectdarkstar.services</groupId>
   <artifactId>services-parent</artifactId>
   <name>Services</name>
@@ -27,28 +20,50 @@
 
   <build>
     <plugins>
-      <!-- Always attach a sources jar where applicable -->
+      <!-- Use 1.6 for source and target for the services code -->
       <plugin>
 	<groupId>org.apache.maven.plugins</groupId>
-	<artifactId>maven-source-plugin</artifactId>
-	<executions>
-	  <execution>
-	    <id>attach-sources</id>
-	  </execution>
-	</executions>
-      </plugin>
-      <!-- Always attach a javadoc jar where applicable -->
-      <plugin>
-	<groupId>org.apache.maven.plugins</groupId>
-	<artifactId>maven-javadoc-plugin</artifactId>
-	<executions>
-	  <execution>
-	    <id>attach-javadocs</id>
-	  </execution>
-	</executions>
+	<artifactId>maven-compiler-plugin</artifactId>
+	<configuration>
+	  <source>1.6</source>
+	  <target>1.6</target>
+	</configuration>
       </plugin>
     </plugins>
   </build>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+	<groupId>com.projectdarkstar.server</groupId>
+	<artifactId>sgs-server-api</artifactId>
+	<version>${sgs.version}</version>
+      </dependency>
+      <dependency>
+	<groupId>com.projectdarkstar.server</groupId>
+	<artifactId>sgs-server-api</artifactId>
+	<version>${sgs.version}</version>
+        <classifier>sources</classifier>
+      </dependency>
+      <dependency>
+	<groupId>com.projectdarkstar.server</groupId>
+	<artifactId>sgs-server-internal-api</artifactId>
+	<version>${sgs.version}</version>
+      </dependency>
+      <dependency>
+	<groupId>com.projectdarkstar.server</groupId>
+	<artifactId>sgs-server-internal-api</artifactId>
+	<version>${sgs.version}</version>
+        <classifier>sources</classifier>
+      </dependency>
+      <!-- This dependency is needed only for TransactionContext util -->
+      <dependency>
+	<groupId>com.projectdarkstar.server</groupId>
+	<artifactId>sgs-server</artifactId>
+	<version>${sgs.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <repositories>
     <repository>
@@ -69,8 +84,7 @@
     <sgs.version>0.9.10</sgs.version>
     <!-- to run against a local version of the trunk uncomment the
     following line and comment out the line above this comment -->
-    <!-- <sgs.version>0.9.8-SNAPSHOT</sgs.version> -->
-    <sgs-shared.version>1.0</sgs-shared.version>
+    <!-- <sgs.version>0.9.11-SNAPSHOT</sgs.version> -->
   </properties>
 
 </project>

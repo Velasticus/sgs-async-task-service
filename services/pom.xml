@@ -11,20 +11,49 @@
   </parent>
 
   <artifactId>services</artifactId>
-  <name>Utility Services</name>
+  <name>UtilityServices</name>
   <packaging>jar</packaging>
   <description>
     Utility Services for the Darkstar applications.
   </description>
 
+  <build>
+    <plugins>
+      <!-- Always attach a sources jar -->
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-assembly-plugin</artifactId>
+	<executions>
+	  <execution>
+	    <id>attach-sources</id>
+	    <phase>package</phase>
+	    <goals>
+              <goal>attached</goal>
+	    </goals>
+	    <configuration>
+	      <descriptors>
+		<descriptor>src/main/assembly/sources.xml</descriptor>
+              </descriptors>
+	      <attach>true</attach>
+	    </configuration>
+	  </execution>
+	</executions>
+      </plugin>
+    </plugins>
+  </build>
+
   <dependencies>
     <dependency>
       <groupId>com.projectdarkstar.server</groupId>
-      <artifactId>sgs-server</artifactId>
+      <artifactId>sgs-server-api</artifactId>
     </dependency>
     <dependency>
       <groupId>com.projectdarkstar.server</groupId>
-      <artifactId>sgs-shared</artifactId>
+      <artifactId>sgs-server-internal-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.projectdarkstar.server</groupId>
+      <artifactId>sgs-server</artifactId>
     </dependency>
   </dependencies>
 

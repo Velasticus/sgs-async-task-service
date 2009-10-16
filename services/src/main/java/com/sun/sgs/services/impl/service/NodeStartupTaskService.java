@@ -19,8 +19,6 @@
 
 package com.sun.sgs.services.impl.service;
 
-import com.sun.sgs.impl.sharedutil.LoggerWrapper;
-
 import com.sun.sgs.kernel.ComponentRegistry;
 
 import com.sun.sgs.service.Service;
@@ -60,9 +58,8 @@ public class NodeStartupTaskService implements Service {
         NodeStartupTaskService.class.getName() + ".task.class";
 
     // the service's logger
-    private static final LoggerWrapper logger =
-        new LoggerWrapper(Logger.getLogger(NodeStartupTaskService.
-                                           class.getName()));
+    private static final Logger logger =
+        Logger.getLogger(NodeStartupTaskService.class.getName());
 
     // the service used to run the startup task
     private final AsyncTaskService asyncTaskService;
@@ -82,8 +79,7 @@ public class NodeStartupTaskService implements Service {
                 runnable = (AsyncRunnable)(runnableClass.newInstance());
             } catch (Exception e) {
                 if (logger.isLoggable(Level.SEVERE))
-                    logger.logThrow(Level.SEVERE, e,
-                                    "Failed to load startup class");
+                    logger.log(Level.SEVERE, "Failed to load startup class", e);
                 throw new IllegalArgumentException("Couldn't load startup " +
                                                    "runnable class: " +
                                                    runnableProp, e);

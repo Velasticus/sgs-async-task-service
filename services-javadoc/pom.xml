@@ -21,14 +21,15 @@
   <dependencies>
     <dependency>
       <groupId>com.projectdarkstar.server</groupId>
-      <artifactId>sgs-shared</artifactId>
+      <artifactId>sgs-server-api</artifactId>
       <classifier>sources</classifier>
     </dependency>
     <dependency>
       <groupId>com.projectdarkstar.server</groupId>
-      <artifactId>sgs-server</artifactId>
+      <artifactId>sgs-server-internal-api</artifactId>
       <classifier>sources</classifier>
     </dependency>
+
     <dependency>
       <groupId>com.projectdarkstar.services</groupId>
       <artifactId>services</artifactId>
