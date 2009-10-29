@@ -8,7 +8,7 @@
   <artifactId>services-parent</artifactId>
   <name>Services</name>
   <packaging>pom</packaging>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.2-SNAPSHOT</version>
   <description>
     Parent POM for the Project Darkstar Services project.
   </description>
