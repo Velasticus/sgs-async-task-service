@@ -8,7 +8,7 @@
   <artifactId>services-parent</artifactId>
   <name>Services</name>
   <packaging>pom</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.1-SNAPSHOT</version>
   <description>
     Parent POM for the Project Darkstar Services project.
   </description>
@@ -17,6 +17,15 @@
     <module>services</module>
     <module>services-javadoc</module>
   </modules>
+
+  <!-- Deployment site -->
+  <distributionManagement>
+    <repository>
+      <id>java.net-maven2-repository</id>
+      <name>java.net Maven2 Repository</name>
+      <url>java-net:/maven2-repository/trunk/repository/</url>
+    </repository>
+  </distributionManagement>
 
   <build>
     <plugins>
@@ -30,6 +39,14 @@
 	</configuration>
       </plugin>
     </plugins>
+    <!-- Reference wagon-svn for deployment -->
+    <extensions>
+      <extension>
+        <groupId>org.jvnet.wagon-svn</groupId>
+        <artifactId>wagon-svn</artifactId>
+        <version>1.9</version>
+      </extension>
+    </extensions>
   </build>
 
   <dependencyManagement>
@@ -81,10 +98,10 @@
   </repositories>
 
   <properties>
-    <sgs.version>0.9.10</sgs.version>
+    <sgs.version>0.9.11</sgs.version>
     <!-- to run against a local version of the trunk uncomment the
     following line and comment out the line above this comment -->
-    <!-- <sgs.version>0.9.11-SNAPSHOT</sgs.version> -->
+    <!-- <sgs.version>0.9.12-SNAPSHOT</sgs.version> -->
   </properties>
 
 </project>

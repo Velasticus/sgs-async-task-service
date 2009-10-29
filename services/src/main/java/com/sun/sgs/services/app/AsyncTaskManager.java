@@ -70,8 +70,8 @@ public interface AsyncTaskManager {
      * removing it. Otherwise, the {@code Manager} will take care of
      * managing and removing the object when the task has finished.
      *
-     * @param T the type that the {@code AsyncCallable} will return and that
-     *          will be provided to the {@code AsyncTaskCallback}
+     * @param <T> the type that the {@code AsyncCallable} will return and that
+     *            will be provided to the {@code AsyncTaskCallback}
      * @param c an {@code AsyncCallable} to run non-transactionally after
      *          the current transaction completes
      * @param callback an {@code AsynchTaskCallback} to notify of the result

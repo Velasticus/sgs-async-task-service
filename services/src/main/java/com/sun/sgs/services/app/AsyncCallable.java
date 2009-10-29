@@ -23,6 +23,8 @@ package com.sun.sgs.services.app;
 /**
  * A {@code Callable}-like interface that provides access to a
  * {@code TransactionRunner} for running transactions.
+ *
+ * @param <T> the type returned by this callable on completion
  */
 public interface AsyncCallable<T> {
 
@@ -32,7 +34,6 @@ public interface AsyncCallable<T> {
      * {@code TransactionRunner} may be used during the run of this method
      * to run transactional tasks.
      *
-     * @param T the type returned by this method
      * @param transactionRunner a {@code TransactionRunner} used to start
      *                          transactions
      *
