@@ -183,6 +183,9 @@ public class TagService implements TagManager, Service {
 
     /** {@inheritDoc} */
     public boolean tagTask(long tag, Object tagValue) {
+        if (isShutdown.get()) {
+            return false;
+        }
         TagReportImpl report = localTagReport.get();
         if (report.tagMap.containsKey(tag)) {
             return false;
