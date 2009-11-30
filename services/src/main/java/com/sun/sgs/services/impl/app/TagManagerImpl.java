@@ -1,14 +1,14 @@
 /*
  * Copyright 2009 Sun Microsystems, Inc.
  *
- * This file is part of Project Darkstar Server.
+ * This file is part of Project Darkstar Services.
  *
- * Project Darkstar Server is free software: you can redistribute it
+ * Project Darkstar Services is free software: you can redistribute it
  * and/or modify it under the terms of the GNU General Public License
  * version 2 as published by the Free Software Foundation and
  * distributed hereunder to you.
  *
- * Project Darkstar Server is distributed in the hope that it will be useful,
+ * Project Darkstar Services is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
