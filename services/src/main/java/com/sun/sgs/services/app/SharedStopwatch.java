@@ -56,7 +56,8 @@ public class SharedStopwatch implements Stopwatch, ManagedObject, Serializable {
     /**
      * {@inheritDoc}
      * <p>
-     * 
+     * If this {@code SharedStopwatch} has been stopped then calling
+     * this method will re-start the watch.
      */
     public void start() {
         if (totalTime != 0) {
@@ -70,7 +71,7 @@ public class SharedStopwatch implements Stopwatch, ManagedObject, Serializable {
     /**
      * {@inheritDoc}
      * <p>
-     * 
+     * @throws IllegalStateException if the watch is stopped.
      */
     public void split() {
         if (totalTime != 0) {
@@ -83,7 +84,8 @@ public class SharedStopwatch implements Stopwatch, ManagedObject, Serializable {
     /**
      * {@inheritDoc}
      * <p>
-     * 
+     * If this {@code SharedStopwatch} has been stopped then this will
+     * return the total time that this watch ran.
      */
     public long getElapsedTime() {
         if (totalTime != 0) {
@@ -100,7 +102,8 @@ public class SharedStopwatch implements Stopwatch, ManagedObject, Serializable {
     /**
      * {@inheritDoc}
      * <p>
-     *
+     * If this {@code SharedStopwatch} has been stopped then this will
+     * return 0.
      */
     public long getCurrentSplit() {
         if (totalTime != 0) {
@@ -112,7 +115,10 @@ public class SharedStopwatch implements Stopwatch, ManagedObject, Serializable {
     /* SharedStopwatch utility methods */
 
     /**
-     *
+     * Stops this {@code SharedStopwatch}. No further elapsed time will be
+     * observed, so the elapsed time reported will always be the time that
+     * the watch was running before being stopped. The watch is also split.
+     * If this watch has been stopped aleady then this call has no effect.
      */
     public void stop() {
         if (totalTime != 0) {
@@ -120,16 +126,19 @@ public class SharedStopwatch implements Stopwatch, ManagedObject, Serializable {
         }
         AppContext.getDataManager().markForUpdate(this);
         totalTime = stopwatch.getElapsedTime();
+        stopwatch.split();
     }
 
     /**
-     *
+     * Restarts a {@code SharedStopwatch} that may be either stopped or
+     * running.
      */
     public void restart() {
         AppContext.getDataManager().markForUpdate(this);
         totalTime = 0;
         stopwatch = AppContext.getManager(StopwatchManager.class).
             createStopwatch();
+        stopwatch.start();
     }
 
 }
