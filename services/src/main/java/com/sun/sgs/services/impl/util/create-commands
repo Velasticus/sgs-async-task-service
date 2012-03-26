@@ -1,0 +1,71 @@
+
+-- The set of commands used to create all of the tables in a MySQL instance
+-- for the two report handling classes in this package.
+
+CREATE TABLE core
+(
+task_key bigint NOT NULL AUTO_INCREMENT,
+node smallint NOT NULL,
+txn bigint,
+task_type varchar(192) NOT NULL,
+task_owner varchar(64) NOT NULL,
+success bit NOT NULL,
+start_scheduled bigint NOT NULL,
+start_actual bigint NOT NULL,
+run_time smallint NOT NULL,
+try_count smallint NOT NULL,
+ready_count smallint NOT NULL,
+PRIMARY KEY (task_key),
+KEY core_node_idx (node),
+KEY core_txn_idx (txn)
+);
+
+CREATE TABLE nodes
+(
+id smallint UNIQUE NOT NULL,
+addr varchar(16) NOT NULL,
+time_added timestamp DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (id)
+);
+
+CREATE TABLE participants
+(
+task bigint NOT NULL,
+part_name varchar(192) NOT NULL,
+part_prepared bit NOT NULL,
+part_read_only bit NOT NULL,
+part_committed bit NOT NULL,
+part_direct bit NOT NULL,
+time_prepare smallint NOT NULL,
+time_finish smallint NOT NULL,
+FOREIGN KEY (task) REFERENCES core(task_key)
+);
+
+CREATE TABLE access_base
+(
+task bigint NOT NULL,
+conflict smallint NOT NULL,
+other_txn bigint,
+FOREIGN KEY (task) REFERENCES core(task_key)
+);
+
+CREATE TABLE access_objs
+(
+task bigint NOT NULL,
+idx smallint NOT NULL,
+id varchar(192) NOT NULL,
+for_read bit NOT NULL,
+description varchar(192),
+src varchar(192) NOT NULL,
+FOREIGN KEY (task) REFERENCES core(task_key)
+);
+
+CREATE TABLE tags
+(
+node smallint NOT NULL,
+txn bigint NOT NULL,
+tag_id bigint NOT NULL,
+tag_value varchar(32),
+KEY tags_node_idx (node),
+KEY tags_txn_idx (txn)
+);
